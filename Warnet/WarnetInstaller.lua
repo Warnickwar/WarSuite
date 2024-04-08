@@ -301,7 +301,6 @@ function pageHandler()
         TextBox:setText(textArrs[2])
         TextBox:drawTextBox()
     elseif page == 3 then
-        selLine = 1
         SelectionBox:setOptions(textArrs[3])
         SelectionBox:drawSelectionBox(1,selLine)
     elseif page == 4 then
@@ -341,7 +340,7 @@ paintutils.drawImage(Title,(termDimensions[1]/2)-14,2)
 pageHandler()
 while true do
     local event =  { os.pullEvent() }
-    if event[1] == "terminate" then break end
+    if event[1] == "terminate" then endInstall() end
     if event[1] == "key" then
         if event[2] == keys.right then
             if page+1 <= 5 then
