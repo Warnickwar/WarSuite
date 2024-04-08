@@ -17,3 +17,7 @@
 - Custom Hosting- name your device what you want on the internet, and it'll respond to the host ID as well!
 - **(TBD)** Auto-generative ID- Easily assign your device a new, personal ID to be recognized on the network by!
 - **(TBD)** VPN Addon- create your own secure form of VPNs to prevent unauthorized use!
+
+  **Note: Warnet is currently in development, changes will be made over time.**
+  Install Warnet standalone by running the following command on your computer:
+```wget run https://github.com/Warnickwar/WarSuite/blob/main/Warnet/WarnetInstaller.lua```
