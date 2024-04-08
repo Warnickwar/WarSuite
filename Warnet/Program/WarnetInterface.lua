@@ -128,9 +128,9 @@ end
 
 --- Gets the destinations of a message. Which computer(s) the message was intended for.
 ---@param builtData table The message to check
----@return table|nil destinations The set of intended destinations, or nil if there is none
+---@return table destinations The set of intended destinations, or an empty table ({}) if there is none
 function getDestination(builtData)
-    return builtData.Destination or nil
+    return builtData.Destination or {}
 end
 
 --- Gets the origin/source of a message. Which computer the message came from.
