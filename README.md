@@ -20,4 +20,4 @@
 
   **Note: Warnet is currently in development, changes will be made over time.**
   Install Warnet standalone by running the following command on your computer:
-```wget run https://github.com/Warnickwar/WarSuite/blob/main/Warnet/WarnetInstaller.lua```
+```wget run https://raw.githubusercontent.com/Warnickwar/WarSuite/main/Warnet/WarnetInstaller.lua```
