@@ -210,7 +210,10 @@ local SelectionBox = {
     end,
 
     getOption = function(o,sel)
-        return o.options[sel].toggled
+        if sel ~= nil then
+            return o.options[sel].toggled
+        end
+        return o.options
     end,
 
     toggleSel = function(o,line)
@@ -357,6 +360,19 @@ while true do
             if page == 5 then
                 endInstall()
                 break
+            end
+        end
+        if page == 3 then
+            if event[2] == keys.up then
+                if selLine > 1 then
+                    selLine = selLine - 1
+                    pageHandler()
+                end
+            elseif event[2] == keys.down then
+                if selLine<=#SelectionBox:getOption() then
+                    selLine = selLine + 1
+                    pageHandler()
+                end
             end
         end
     end
