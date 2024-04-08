@@ -68,7 +68,8 @@ local textArrs = {
     },
     [3] = { -- Selection list
         {"Assign new address", true},
-        "Make whitelist",
+        "Use Whitelist",
+        "Use Blacklist"
     }
 }
 local page = 1
@@ -245,7 +246,7 @@ end
 
 local function InstallManager()
     if page ~= 4 then return end
-    local completed, remainder = 0, 3
+    local completed, remainder = 0, 5
     paintutils.drawFilledBox((termDimensions[1]/2)-14, 8, (termDimensions[1]/2)+14,18, colors.black)
     term.setTextColor(colors.white)
     printCentered("Starting install...",9)
@@ -266,11 +267,24 @@ local function InstallManager()
     if SelectionBox:getOption(1) == true and settings.get("warnet.address") == nil then
         printCentered("Setting network address...",9)
         local address = addressGen()
-        settings.define("warnet.address", {"The primary hosting address of the computer",address,string})
+        settings.define("warnet.address", {"The primary hosting address of the computer",address,"string"})
         settings.set("warnet.address", address)
     end
     Address = settings.get("warnet.address")
     completed = 3
+    printCentered("Setting whitelist settings...",9)
+    settings.define("warnet.use_whitelist", {"Whether or not the device responds only to IDs listed in the 'warnet.whitelisted_hosts' setting",false,"boolean")
+    if SelectionBox:getOption(2) == true then
+        settings.set("warnet.use_whitelist", true)
+    end
+    completed = 4
+    ProgressBar:drawBar(completed,remainder)
+    settings.define("warnet.whitelisted_hosts", {"Hosts and/or addresses which the device will respond to, ignoring other devices if 'warnet.use_whitelist' is true",{},"table")
+    settings.define("warnet.invert_whitelist", {"Changes functionality so that instead of only accepting responses from 'warnet.whitelisted_hosts', it will deny responses from only those hosts",false,"boolean")
+    if SelectionBox:getOption(3) == true then
+        settings.set("warnet.invert_whitelist", true)
+    end
+    completed = 5
     ProgressBar:drawBar(completed,remainder)
     page = 5
     pageHandler()
