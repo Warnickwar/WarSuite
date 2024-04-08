@@ -67,7 +67,8 @@ local textArrs = {
         "Press \x1A to get started!"
     },
     [3] = { -- Selection list
-        {"Assign new address", true}
+        {"Assign new address", true},
+        "Make whitelist",
     }
 }
 local page = 1
@@ -283,8 +284,9 @@ function pageHandler()
         TextBox:setText(textArrs[2])
         TextBox:drawTextBox()
     elseif page == 3 then
+        selLine = 1
         SelectionBox:setOptions(textArrs[3])
-        SelectionBox:drawSelectionBox(1,1)
+        SelectionBox:drawSelectionBox(1,selLine)
     elseif page == 4 then
         InstallManager()
     elseif page == 5 then
@@ -332,12 +334,16 @@ while true do
                 SelectionBox:toggleSel(selLine)
             end
             if page == 5 then
+                endInstall()
                 break
             end
         end
     end
 end
-term.setBackgroundColor(colors.black)
-term.clear()
-term.setCursorPos(1,1)
-term.setPaletteColor(colors.red, 0x4000)
+
+function endInstall()
+    term.setBackgroundColor(colors.black)
+    term.clear()
+    term.setCursorPos(1,1)
+    term.setPaletteColor(colors.red, 0x4000)
+end
