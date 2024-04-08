@@ -19,5 +19,7 @@
 - **(TBD)** VPN Addon- create your own secure form of VPNs to prevent unauthorized use!
 
   **Note: Warnet is currently in development, changes will be made over time.**
+  
   Install Warnet standalone by running the following command on your computer:
+  
 ```wget run https://raw.githubusercontent.com/Warnickwar/WarSuite/main/Warnet/WarnetInstaller.lua```
