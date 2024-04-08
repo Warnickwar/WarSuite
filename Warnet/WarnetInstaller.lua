@@ -322,6 +322,13 @@ function pageHandler()
     end
 end
 
+function endInstall()
+    term.setBackgroundColor(colors.black)
+    term.clear()
+    term.setCursorPos(1,1)
+    term.setPaletteColor(colors.red, 0x4000)
+end
+
 -- Actual GUI
 term.clear()
 term.setCursorPos(1,1)
@@ -353,11 +360,4 @@ while true do
             end
         end
     end
-end
-
-function endInstall()
-    term.setBackgroundColor(colors.black)
-    term.clear()
-    term.setCursorPos(1,1)
-    term.setPaletteColor(colors.red, 0x4000)
 end
